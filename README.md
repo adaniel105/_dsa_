@@ -1,1 +1,1 @@
-a repository of my solutions to usaco problems
+cf/usaco/dsa general
