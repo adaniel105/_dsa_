@@ -33,3 +33,42 @@ int main() {
 	freopen("shell.out", "w", stdout);
 	printf("%d\n", std::max({counter[0], counter[1], counter[2]}));
 }
+
+// 5/10 passed
+#include <bits/stdc++.h>
+using namespace std;
+
+//see in segment, run check and update counter.
+int main() {
+    freopen("speeding.in", "r", stdin);
+    int N, M;
+    cin >> N >> M;
+    int counter[3]; 
+
+    int seg[N];
+    int seg_len[N];
+    for(int i = 0; i < N; i++){
+        int d , s;
+        cin >> d >> s;
+        seg_len[i] = d;
+        seg[i] = s;
+    }
+    int bessie_seg[M];
+    int bessie_seg_len[M];
+    for (int i = 0; i < M ; i++){
+        int d, s;
+        cin >> d >> s;
+        bessie_seg_len[i] = d;
+        bessie_seg[i] = s;
+    }
+
+    for(int i = 0; i < N; i++){
+        if (bessie_seg_len[i] > seg_len[i]){
+            counter[i] = std::min(bessie_seg[i], (bessie_seg[i] - seg[i-1]));
+        } else counter[i] = 0;
+        //cout << counter[i] << endl;
+    }
+    int *pointer = std::max_element(counter, counter + N);
+    freopen("speeding.out", "w", stdout);
+    cout << *pointer;
+}
