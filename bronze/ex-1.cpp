@@ -152,3 +152,60 @@ int main() {
 	cout << most << endl;
 }
 
+//incomplete
+#include <bits/stdc++.h>
+using namespace std;
+
+int N, M;
+
+
+
+//pop in a genome using for loop this then iterate.
+int normalpos(char g, int row){
+    vector<pair<int, char>> gpos(10);
+    for(int i=0; i< row; ++i){
+        if(normalArr[row][i] == g) gpos.push_back({i, g});
+    }
+    
+    map<pair<int,string>,int> checker;
+    for (const auto &elem: gpos){
+        ++checker[elem];
+    }
+    vector<int> equalpos(10);
+    for(const &elem: checker){
+        equalpos.push_back({elem.first.first, elem.first.second})
+    }
+    cout<< equalpos[0]<< endl;
+    return equalpos;
+}
+
+//check for g at all rows of index in pair.
+int spottypos(char g){
+    int total[10];
+    for(int row = 0; row < N; ++i){
+        equalpos = normalpos(row, g);
+        pos = equalpos.first;
+        genome = equalpos.second;
+        //for loop iterating through rows and cols
+        if (spottyArr[pos][i] == g)
+    }
+}
+
+int main(void){
+    cin >> N >> M;
+    int spottyArr[10][20];
+    int normalArr[10][20];
+
+    for(int i=0; i< N; ++i){
+        for(int j=0; j<M; ++j){
+            cin >> spottyArr[i][j];
+        }
+    }
+
+    for(int i=0; i< N; ++i){
+        for(int j=0; j<M; ++j){
+            cin >> normalArr[i][j];
+        }
+    }
+}
+
