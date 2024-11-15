@@ -152,60 +152,53 @@ int main() {
 	cout << most << endl;
 }
 
-//incomplete
-#include <bits/stdc++.h>
+//genomics__normal bf 
+#include <iostream>
+#include <fstream>
+#include <cmath>
 using namespace std;
 
 int N, M;
+string spotty[100], plain[100];
 
-
-
-//pop in a genome using for loop this then iterate.
-int normalpos(char g, int row){
-    vector<pair<int, char>> gpos(10);
-    for(int i=0; i< row; ++i){
-        if(normalArr[row][i] == g) gpos.push_back({i, g});
-    }
-    
-    map<pair<int,string>,int> checker;
-    for (const auto &elem: gpos){
-        ++checker[elem];
-    }
-    vector<int> equalpos(10);
-    for(const &elem: checker){
-        equalpos.push_back({elem.first.first, elem.first.second})
-    }
-    cout<< equalpos[0]<< endl;
-    return equalpos;
+bool test_location(int j)
+{
+  // found_cow[0] refers to spotty cows, and found_cow[1]
+  // refers to non-spotty cows.
+  bool found_cow[2][4] = {0};
+  // for cow[0][0], test for base A,G,C,T in spotty cow, and in plain cow
+  //if both cows show same base, return false, if not, position is usable.increment.
+    for (int i=0; i<N; i++) {
+    if (spotty[i][j] == 'A') found_cow[0][0] = true;
+    if (spotty[i][j] == 'C') found_cow[0][1] = true;
+    if (spotty[i][j] == 'G') found_cow[0][2] = true;
+    if (spotty[i][j] == 'T') found_cow[0][3] = true;
+  }
+  for (int i=0; i<N; i++) {
+    if (plain[i][j] == 'A') found_cow[1][0] = true;
+    if (plain[i][j] == 'C') found_cow[1][1] = true;
+    if (plain[i][j] == 'G') found_cow[1][2] = true;
+    if (plain[i][j] == 'T') found_cow[1][3] = true;
+  }
+  for (int i = 0; i < 4; ++i) {
+    if (found_cow[0][i] && found_cow[1][i]) return false;
+  }
+  return true;
 }
 
-//check for g at all rows of index in pair.
-int spottypos(char g){
-    int total[10];
-    for(int row = 0; row < N; ++i){
-        equalpos = normalpos(row, g);
-        pos = equalpos.first;
-        genome = equalpos.second;
-        //for loop iterating through rows and cols
-        if (spottyArr[pos][i] == g)
-    }
+int main(void)
+{
+  ifstream fin ("cownomics.in");
+  ofstream fout ("cownomics.out");
+  fin >> N >> M;
+  for (int i=0; i<N; i++) fin >> spotty[i];
+  for (int i=0; i<N; i++) fin >> plain[i];
+  int answer = 0;
+  for (int j=0; j<M; j++) 
+    if (test_location(j)) answer++;
+  fout << answer << "\n";
+  return 0;
 }
 
-int main(void){
-    cin >> N >> M;
-    int spottyArr[10][20];
-    int normalArr[10][20];
 
-    for(int i=0; i< N; ++i){
-        for(int j=0; j<M; ++j){
-            cin >> spottyArr[i][j];
-        }
-    }
-
-    for(int i=0; i< N; ++i){
-        for(int j=0; j<M; ++j){
-            cin >> normalArr[i][j];
-        }
-    }
-}
 
