@@ -200,5 +200,28 @@ int main(void)
   return 0;
 }
 
+//distinct values of arr n;
 
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int N;
+    cin >> N;
+
+    int arr[20];
+    for (int i=0;i< N; ++i){
+        cin >> arr[i];
+    }
+
+    sort(arr, arr + N);
+
+    int counter = 0;
+    for (int i=0; i< N; ++i){
+        while( i < N-1 && arr[i] == arr[i+1])i++;
+        counter++;
+    }
+    cout << counter;
+    return 0;
+}
 
