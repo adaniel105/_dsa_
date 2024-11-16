@@ -225,3 +225,20 @@ int main(){
     return 0;
 }
 
+//kayking soln
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n;
+    cin >> n;
+    int arr[100];
+    for(int i= 0; i < (2*n); ++i){
+        cin >> arr[i];
+    }
+    
+    sort(arr, arr + (2*n));
+    //we'll always remove the two largest numbers to single kayaks
+    int minw = arr[(2*n) - 3] - arr[0];
+    cout << minw;
+}
