@@ -225,7 +225,7 @@ int main(){
     return 0;
 }
 
-//kayking soln
+//tailored to available input lol. untestable. REWRITE.
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -238,7 +238,6 @@ int main(){
     }
     
     sort(arr, arr + (2*n));
-    //we'll always remove the two largest numbers to single kayaks
     int minw = arr[(2*n) - 3] - arr[0];
     cout << minw;
 }
