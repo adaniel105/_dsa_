@@ -225,19 +225,42 @@ int main(){
     return 0;
 }
 
-//tailored to available input lol. untestable. REWRITE.
+//kayaking soln
 #include <bits/stdc++.h>
 using namespace std;
 
 int main(){
-    int n;
-    cin >> n;
-    int arr[100];
-    for(int i= 0; i < (2*n); ++i){
-        cin >> arr[i];
+    int N;
+    cin >> N;
+
+    int w[50];
+    for (int i=0; i< 2 * N; i++){
+        cin >> w[i];
     }
-    
-    sort(arr, arr + (2*n));
-    int minw = arr[(2*n) - 3] - arr[0];
-    cout << minw;
+
+    sort(w, w + (2*N));
+
+    int answer = 1e5;
+
+    for(int i=0; i< 2 * N; ++i){
+        for(int j=i+1; j< 2 * N; ++j){
+
+        //place the first two on single kayaks.
+        // read the rest into s
+            vector<int> s;
+            for (int k =0; k < 2 * N; ++k){
+                if(k != i && k != j)s.push_back(w[k]);            
+            }
+            int temp = 0;
+
+            //calculate minimum instability for the rest.
+            // gotten by subtracting through sorted pairs.
+            for(int k=0; k < 2 * N-2; k+=2){
+                temp += s[k + 1] - s[k];   
+            } 
+
+            answer = min(temp, answer);
+        }
+    }
+    cout << answer << endl;
 }
