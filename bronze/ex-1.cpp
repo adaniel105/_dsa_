@@ -264,3 +264,29 @@ int main(){
     }
     cout << answer << endl;
 }
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int N;
+string S;
+
+//check through every subseq of mailbox seq
+//iterate through until a subseq K is found unique.
+bool unique(int len){
+    set <string> X;
+    for(int i=0; i<= N-len; ++i){
+        if(X.count(S.substr(i, len)) > 0) return true;
+        X.insert(S.substr(i, len));
+    }
+    return false;
+}
+
+int main(){
+    int ans = 1;
+    cin >> N >> S;
+    //freopen("whereami.in", "r", stdin);
+    //freopen("whereami.out", "w", stdout);
+    while(unique(ans))ans++;
+    cout << ans << endl;
+}
