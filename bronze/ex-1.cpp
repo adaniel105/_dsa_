@@ -1,3 +1,38 @@
+
+// 5/12. rewrite with a vector
+//https://usaco.org/index.php?page=viewproblem2&cpid=1301
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+int main(){
+    ll N, K;
+    ll arr[100];
+    cin >> N >> K;
+    for (ll i=0; i< N; ++i){
+        cin >> arr[i];
+    }
+    ll cost = 1 + K;
+    ll last_sub = arr[0]; //holds previous sub date
+    for(ll i=0; i< N; ++i){
+        //only a good idea to extend when it is less than renewing (1+K)
+        if((arr[i] - last_sub) < (1 + K)){
+            //extending the sub is a matter adding the difference in days
+            //to d + k;
+            cost += arr[i] - last_sub;  
+        }else{
+            cost += 1 + K; 
+        }
+
+        last_sub = arr[i];
+    }
+    
+    cout << cost << endl;
+}
+
+
+
+//
 #include <algorithm>
 #include <cstdio>
 #include <vector>
@@ -318,3 +353,4 @@ int main(){
 
     cout << ans << endl;
 }
+
