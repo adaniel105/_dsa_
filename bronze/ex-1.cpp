@@ -354,3 +354,54 @@ int main(){
     cout << ans << endl;
 }
 
+//3/10. rewrite for general case.
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    //freopen("cowtip.in", "r", stdin);
+    //freopen("cowtip.out", "w", stdout);
+    int N;
+    int arr[50][50];
+    bool tipped = false;
+    int ans = 0;
+    cin >> N;
+    for(int i=0; i< N; i++){
+        for(int j= 0; j< N; j++){
+            cin >> arr[i][j];
+            if(arr[i][j] == 1) tipped = true;
+        }
+    }
+
+    
+//unflip the entire board, assuming all are flipped over
+    if (tipped){
+    for(int i= 0; i < N; i++){
+        for(int j=0; j< N; j++){ 
+            if(arr[i][j] == 1){
+                ans = 1;
+                arr[i][j] = 0;
+            } else arr[i][j] = 1;
+    }} 
+    }
+    
+    bool flip = false;
+    //find the ones tipped over 
+    for(int i=0; i< N; i++){
+        for(int j= 0; j < N; j++){
+            if(arr[i][j] == 1){ 
+                if (!flip) ans++;
+                int y_dist = i;
+                int x_dist = j;
+                //flip at every s
+                for(int k = 0; k <= y_dist; k++){
+                    for(int l= 0; l <= x_dist; l++){
+                        arr[i][j] = 0;
+                        flip = true;
+                    }
+                }
+            }else ans;    
+        }
+    }
+    cout << ans << endl;
+}
