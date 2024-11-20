@@ -290,3 +290,31 @@ int main(){
     while(unique(ans))ans++;
     cout << ans << endl;
 }
+
+//mad scientist.
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int main(){
+    freopen("breedflip.in", "r", stdin);
+    freopen("breedflip.out", "w", stdout);
+    int N;
+    string A, B;
+    cin >> N >> A >> B;
+    int ans = 0;
+    bool flip = false;
+    
+    for(int i = 0; i< N; ++i){
+        // ans is only incremented at the start of a mismatched
+        //portion of the string, when our variable flip is false (!flip evaluates);
+        if(A[i] != B[i]){
+            if(!flip) { 
+                flip = true;
+                ans++;
+            } 
+        }else{ flip = false; }
+    }
+
+    cout << ans << endl;
+}
