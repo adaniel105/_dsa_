@@ -1,4 +1,45 @@
 
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    //freopen("cowtip.in", "r", stdin);
+    //freopen("cowtip.out", "w", stdout);
+    int N;
+    //use dyanamic array, weird habit.
+    char arr[50][50]; //no whitespace b/w problem input, so we read as char. 
+    int ans = 0;
+    cin >> N;
+    for(int i=0; i< N; i++){
+        for(int j= 0; j< N; j++){
+            cin >> arr[i][j];
+        }
+    }
+
+    //find the ones tipped over, starting from the bottom right. 
+    for(int i= N-1; i >= 0; i--){
+        for(int j= N-1; j >= 0; j--){
+            if(arr[i][j] == '1'){ 
+                ans++;
+                //unnecessary
+                int y_dist = i;
+                int x_dist = j;
+                for(int a = 0; a <= y_dist; a++){
+                    for(int b = 0; b <= x_dist; b++){
+                        if(arr[a][b] == '1'){
+                            arr[a][b] = '0';
+                        }else arr[a][b] = '1';
+                    }
+                }
+            }
+        }
+    }
+    cout << ans << endl;
+}
+
+
+
 // 5/12. rewrite with a vector
 //https://usaco.org/index.php?page=viewproblem2&cpid=1301
 #include <bits/stdc++.h>
@@ -354,54 +395,3 @@ int main(){
     cout << ans << endl;
 }
 
-//3/10. rewrite for general case.
-#include <bits/stdc++.h>
-using namespace std;
-
-int main(){
-    //freopen("cowtip.in", "r", stdin);
-    //freopen("cowtip.out", "w", stdout);
-    int N;
-    int arr[50][50];
-    bool tipped = false;
-    int ans = 0;
-    cin >> N;
-    for(int i=0; i< N; i++){
-        for(int j= 0; j< N; j++){
-            cin >> arr[i][j];
-            if(arr[i][j] == 1) tipped = true;
-        }
-    }
-
-    
-//unflip the entire board, assuming all are flipped over
-    if (tipped){
-    for(int i= 0; i < N; i++){
-        for(int j=0; j< N; j++){ 
-            if(arr[i][j] == 1){
-                ans = 1;
-                arr[i][j] = 0;
-            } else arr[i][j] = 1;
-    }} 
-    }
-    
-    bool flip = false;
-    //find the ones tipped over 
-    for(int i=0; i< N; i++){
-        for(int j= 0; j < N; j++){
-            if(arr[i][j] == 1){ 
-                if (!flip) ans++;
-                int y_dist = i;
-                int x_dist = j;
-                //flip at every s
-                for(int k = 0; k <= y_dist; k++){
-                    for(int l= 0; l <= x_dist; l++){
-                        arr[i][j] = 0;
-                        flip = true;
-                    }
-                }
-            }else ans;    
-        }
-    }
-    cout << ans << endl;
-}
