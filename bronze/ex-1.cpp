@@ -305,6 +305,7 @@ int main(){
 #include <bits/stdc++.h>
 using namespace std;
 
+
 int main(){
     int N;
     cin >> N;
@@ -341,6 +342,8 @@ int main(){
     cout << answer << endl;
 }
 
+
+//7https://usaco.org/index.php?page=viewproblem2&cpid=964
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -367,7 +370,7 @@ int main(){
     cout << ans << endl;
 }
 
-//mad scientist.
+//mad scientist: https://usaco.org/index.php?page=viewproblem2&cpid=1012
 #include <bits/stdc++.h>
 using namespace std;
 
