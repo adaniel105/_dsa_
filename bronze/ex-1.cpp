@@ -449,12 +449,20 @@ int main() {
 #include <bits/stdc++.h>
 using namespace std;
 
+void setIO(string name = "") {
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	if (!name.empty()) {
+		freopen((name + ".in").c_str(), "r", stdin);
+		freopen((name + ".out").c_str(), "w", stdout);
+	}
+}
+
 int main(){
-    //freopen("planting.in", "r", stdin);
-    //freopen("planting.out", "w", stdout);
+    setIO("planting");
     int N;
-    vector<int> degree(N+1); //account for 1-indexing
     cin >> N;
+    vector<int> degree(N + 1); //account for 1-indexing
     
     for (int i= 0; i < N - 1; i++){
         int node1, node2;
@@ -464,9 +472,9 @@ int main(){
     }
 
     int ans = 0;
-    //for a given position i, you have to plant diff grass types for i and (i + 1) * N before repeating. 
-    for(int i = 1 ; i <= N; i++){
-      ans = max(ans, degree[i]);  
+    //for a given position i, you have to plant diff grass types for i and (i + 1) * 	N before repeating. 
+    for(int j = 1 ; j <= N; j++){
+      ans = max(ans, degree[j]);  
     }
     //grass type for i itself 
     cout << ans + 1 << endl;
