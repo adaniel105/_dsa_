@@ -442,3 +442,32 @@ int main() {
 
 	for (auto cow : cows) { cout << cow << endl; }
 }
+
+
+//https://usaco.org/index.php?page=viewproblem2&cpid=894
+//NOTE: review dfs soln.
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    //freopen("planting.in", "r", stdin);
+    //freopen("planting.out", "w", stdout);
+    int N;
+    vector<int> degree(N+1); //account for 1-indexing
+    cin >> N;
+    
+    for (int i= 0; i < N - 1; i++){
+        int node1, node2;
+        cin >> node1 >> node2;
+        degree[node1]++;
+        degree[node2]++;
+    }
+
+    int ans = 0;
+    //for a given position i, you have to plant diff grass types for i and (i + 1) * N before repeating. 
+    for(int i = 1 ; i <= N; i++){
+      ans = max(ans, degree[i]);  
+    }
+    //grass type for i itself 
+    cout << ans + 1 << endl;
+}
