@@ -21,8 +21,6 @@ typedef vector<pair<int,int>>	vpi;
 # define rsz		resize
 # define lc         id << 1
 # define rc         id << 1 | 1
-# define fast_io	ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);
-
 # define FOR(i,a,b)		for(int i=(a); i<(b); ++i)
 # define F0R(i,b)		FOR(i,0,b)
 # define ROF(i,a,b)		for(int i=(b)-1; i>=(a); --i)
@@ -36,7 +34,14 @@ const ll mod = 1e9 + 7;
 const ll inf = 3e9;
 const double pi = 3.141592;
 
-void setIO(string s) { freopen((s + ".in").c_str(), "r", stdin); freopen((s + ".out").c_str(), "w", stdout); }
+void setIO(string name = "") {
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);cout.tie(0);
+	if (!name.empty()) {
+		freopen((name + ".in").c_str(), "r", stdin);
+		freopen((name + ".out").c_str(), "w", stdout);
+	}
+}
 
 const int N = 2e5 + 3;
 
