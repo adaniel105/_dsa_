@@ -479,3 +479,57 @@ int main(){
     //grass type for i itself 
     cout << ans + 1 << endl;
 }
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n, q;
+    cin >> n >> q;
+
+    vector<int>ones(n + 1);
+    vector<int>twos(n + 1);
+    vector<int> threes(n + 1);
+    int a = 0; int b= 0; int c= 0;
+    
+    for(int i=1; i <= n; i++){
+        int cow;
+        cin >> cow;
+        if(cow == 1){
+            a++;
+            ones[i] = a;
+            twos[i] = b;
+            threes[i] = c;
+        }else if(cow == 2){
+            b++;
+            ones[i] = a;
+            twos[i] = b;
+            threes[i] = c;
+        }else{
+            c++;
+            ones[i] = a;
+            twos[i] = b;
+            threes[i] = c;
+            }
+        }
+
+    vector<int>ans;
+    for(int i=0; i < q; i++){
+        int q1, q2;
+        cin >> q1 >> q2;
+        if(q1 == q2){
+            if(ones[q1]) {ans.push_back(1);ans.push_back(0);ans.push_back(0);}
+            else if(twos[q1]) {ans.push_back(0);ans.push_back(1);ans.push_back(0);}
+            else if(threes[q1]) {ans.push_back(0);ans.push_back(0);ans.push_back(1);}
+        }else{ans.push_back(ones[q2]);ans.push_back(twos[q2]);ans.push_back(threes[q2]);}
+    
+    }
+    for(int i=0; i< twos.size(); i++){
+      cout << twos[i];      
+    }
+    /*
+    for(int i=0; i < ans.size(); i++){
+        cout << ans[i] << " ";
+    }
+*/
+}
