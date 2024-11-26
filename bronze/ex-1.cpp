@@ -480,10 +480,22 @@ int main(){
     cout << ans + 1 << endl;
 }
 
+//formatting
 #include <bits/stdc++.h>
 using namespace std;
 
+
+void setIO(string name = "") {
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);cout.tie(0);
+	if (!name.empty()) {
+		freopen((name + ".in").c_str(), "r", stdin);
+		freopen((name + ".out").c_str(), "w", stdout);
+	}
+}
+
 int main(){
+    //setIO("bcount");
     int n, q;
     cin >> n >> q;
 
@@ -517,19 +529,12 @@ int main(){
     for(int i=0; i < q; i++){
         int q1, q2;
         cin >> q1 >> q2;
-        if(q1 == q2){
-            if(ones[q1]) {ans.push_back(1);ans.push_back(0);ans.push_back(0);}
-            else if(twos[q1]) {ans.push_back(0);ans.push_back(1);ans.push_back(0);}
-            else if(threes[q1]) {ans.push_back(0);ans.push_back(0);ans.push_back(1);}
-        }else{ans.push_back(ones[q2]);ans.push_back(twos[q2]);ans.push_back(threes[q2]);}
-    
+        ans.push_back(ones[q2] - ones[q1 - 1]);
+        ans.push_back(twos[q2] - twos[q1 - 1]);
+        ans.push_back(threes[q2] - threes[q1 - 1]);
     }
-    for(int i=0; i< twos.size(); i++){
-      cout << twos[i];      
-    }
-    /*
     for(int i=0; i < ans.size(); i++){
-        cout << ans[i] << " ";
+      cout << ans[i] << " ";      
     }
-*/
 }
+
