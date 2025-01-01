@@ -1,3 +1,4 @@
+??? from here until ???END lines may have been inserted/deleted
 //6/10. unoptimized soln.
 //https://cses.fi/problemset/task/1662
 #include <bits/stdc++.h>
@@ -134,4 +135,27 @@ int main(){
 
 	}
 
+}
+
+//https://cses.fi/problemset/result/11618888/
+//soln: kadane. can be solved with  prefix sums or kadane's greedy algo.
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+int main(){
+	int n;
+	cin >> n;
+	vector<long long>a(n);
+	for(int i=0; i<n;i++) cin >> a[i];
+
+	ll sum = a[0]; //accounts for -ve numbers
+	ll best = a[0];
+	for(int i=1 ; i <n; i++){
+		//greedily constructs the subarray sum and compares
+		sum = max(sum + a[i], a[i]);
+		best = max(best, sum);
+	}
+
+	cout << best << "\n";
 }
