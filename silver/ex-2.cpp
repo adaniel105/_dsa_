@@ -1,4 +1,3 @@
-??? from here until ???END lines may have been inserted/deleted
 //6/10. unoptimized soln.
 //https://cses.fi/problemset/task/1662
 #include <bits/stdc++.h>
