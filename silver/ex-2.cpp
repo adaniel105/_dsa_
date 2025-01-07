@@ -211,3 +211,31 @@ int main() {
 	}
 	cout << valid_area << endl;
 }
+
+
+//passed 5/10 XD written half asleep how does this even work
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+  int n, l, r;
+  cin >> n;
+  vector<int>diff(n*2, 0);
+  int updateValue = 1;
+
+
+  for(int i=1; i<=n;i++){
+    cin >> l >> r;
+    diff[l] += updateValue;
+    diff[r+1] -= updateValue;
+  }
+
+  for (int i = 1; i <= n; i++) {
+		diff[i] += diff[i - 1];
+	}
+
+  
+  cout << *max_element(diff.begin(), diff.end()) << "";
+
+}
+
