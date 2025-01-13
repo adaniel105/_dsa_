@@ -239,3 +239,37 @@ int main(){
 
 }
 
+
+//twosum
+//https://cses.fi/problemset/task/1640
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int main(){
+	ios_base::sync_with_stdio(0);
+	cin.tie(0); cout.tie(0);
+	int n , x;
+	cin >> n  >> x;
+	vector<pair<int,int>>arr;
+
+	for (int i = 0; i < n; i++) {
+		int num;
+		cin >> num;
+		arr.push_back({num, i + 1});
+	}
+
+	sort(arr.begin(), arr.end());
+	int left = 0; int right = n-1;
+	while(left < right){
+		if(arr[left].first + arr[right].first > x){
+			right--;
+		}else if(arr[left].first + arr[right].first < x){
+			left++;
+		}else if(arr[left].first + arr[right].first == x){
+			cout << arr[left].second << " " << arr[right].second;
+			return 0;
+		}
+	}
+	cout << "IMPOSSIBLE";
+}
