@@ -212,30 +212,34 @@ int main() {
 	cout << valid_area << endl;
 }
 
-
-//passed 5/10 XD written half asleep how does this even work
+//resturant-customers
+//https://cses.fi/problemset/task/1619
 #include <bits/stdc++.h>
 using namespace std;
 
 int main(){
   int n, l, r;
   cin >> n;
-  vector<int>diff(n*2, 0);
-  int updateValue = 1;
+  vector<pair<int,int>>times;
 
 
-  for(int i=1; i<=n;i++){
+  for(int i=0; i<n;i++){
     cin >> l >> r;
-    diff[l] += updateValue;
-    diff[r+1] -= updateValue;
+    times.push_back({l, 1});
+    times.push_back({r, -1});
   }
 
-  for (int i = 1; i <= n; i++) {
-		diff[i] += diff[i - 1];
-	}
+  //sort, the maintain a running prefix accounting for customers entering or leaving
+  sort(times.begin(), times.end());
 
-  
-  cout << *max_element(diff.begin(), diff.end()) << "";
+  int max_ppl, curr = 0; 
+  for(auto t: times){
+    curr += t.second;
+    max_ppl = max(curr, max_ppl);
+  }
+
+  cout << max_ppl;
+
 
 }
 
